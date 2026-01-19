@@ -2,6 +2,8 @@ This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-
 
 ## Getting Started
 
+# next js projects fetching data from my github account 
+
 First, run the development server:
 
 ```bash
