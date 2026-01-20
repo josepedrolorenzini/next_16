@@ -1,10 +1,20 @@
 import Link from 'next/link';
 import { FaStar, FaCodeBranch, FaEye } from 'react-icons/fa';
 
-async function fetchRepo(name: string): Promise<any> {
+export interface GitHubRepo {
+  id: number;
+  name: string;
+  description: string | null;
+  stargazers_count: number;
+  forks_count: number;
+  watchers_count: number;
+}
+
+async function fetchRepo(name: string): Promise<GitHubRepo[]> {
     const response = await fetch( `https://api.github.com/repos/josepedrolorenzini/${name}`, 
         {
         headers:{
+            Authorization: `Bearer ${process.env.GITHUB_TOKEN}`,
             "User-Agent": "nextjs-app",
             Accept: "application/vnd.github+json",
         },

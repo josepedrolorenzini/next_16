@@ -15,10 +15,13 @@ async function fetchRepos(): Promise<GitHubRepo[]> {
     "https://api.github.com/users/josepedrolorenzini/repos",
     {
       headers: {
+         Authorization: `Bearer ${process.env.GITHUB_TOKEN}`,
         "User-Agent": "nextjs-app",
         Accept: "application/vnd.github+json",
       },
-      next: { revalidate: 60},
+      next: { revalidate: 60,
+              
+       },
     }
   );
 

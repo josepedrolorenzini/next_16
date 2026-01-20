@@ -10,8 +10,9 @@ async function fetchRepoContents(name: string): Promise<RepoContent[]> {
   await new Promise((resolve) => setTimeout(resolve, 3000));
 
   const response = await fetch(
-    `https://api.github.com/repos/bradtraversy/${name}/contents`,
+    `https://api.github.com/repos/josepedrolorenzini/${name}/contents`,
     {   headers:{
+        Authorization: `Bearer ${process.env.GITHUB_TOKEN}`,
             "User-Agent": "nextjs-app",
             Accept: "application/vnd.github+json",
         },
@@ -22,6 +23,7 @@ async function fetchRepoContents(name: string): Promise<RepoContent[]> {
   );
 
   const contents = await response.json();
+  console.log('GITHUB CONTENTS:', contents);
 
   if (!Array.isArray(contents)) {
     return [];
