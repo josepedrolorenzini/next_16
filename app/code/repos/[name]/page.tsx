@@ -1,6 +1,7 @@
 import { Suspense } from 'react';
 import Link from 'next/link';
 import Repo from '@/app/components/Repo';
+import RepoDirs from '@/app/components/RepoDirs';
 
 
 export default async function RepoPage({ params,}: {
@@ -15,6 +16,9 @@ export default async function RepoPage({ params,}: {
         Back To Repositories
       </Link>
        <Repo name={name} />
+        <Suspense fallback={<div>Loading...</div>}>
+          <RepoDirs name={name} />
+        </Suspense>
     </div>
 
   );
